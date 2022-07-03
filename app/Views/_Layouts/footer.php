@@ -1,0 +1,11 @@
+<footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2021 &copy; Mazer</p>
+                    </div>
+                    <div class="float-end">
+                        <p> <span class="text-danger"><i class="bi bi-heart"></i></span>  <a
+                                href="http://instagram.com/Mhdalrizki">Muhammad Alrizki</a></p>
+                    </div>
+                </div>
+            </footer>
