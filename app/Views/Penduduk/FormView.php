@@ -5,15 +5,17 @@
 //fungsi mengambil data
 if ($getData != null) {
     extract($getData);
-
-    
 }
+
+
+
+
 if (session()->getFlashdata('hasForm')) {
     extract(session()->getFlashdata('hasForm'));
 }
 
 ?>
-<div class="page-heading">   
+<div class="page-heading">
 
     <div class="page-title">
         <div class="row">
@@ -45,7 +47,7 @@ if (session()->getFlashdata('hasForm')) {
 
             </div>
             <div class="card-body">
-            
+
                 <?php
                 if (session()->getFlashdata('validation')) {
                 ?>
@@ -59,31 +61,31 @@ if (session()->getFlashdata('hasForm')) {
                 <?php
                 }
                 ?>
-             
-                
-             <form action="<?= site_url($url . '/save') ?>" method="POST" id="formData" enctype="multipart/form-data">
-                    <?= input_hidden('id', $id ?? '') ?>                    
+
+
+                <form action="<?= site_url($url . '/save') ?>" method="POST" id="formData" enctype="multipart/form-data">
+                    <?= input_hidden('id', $id ?? '') ?>
                     <div class=" row">
-                    
-                    
+
+
                         <div class="col-md-8">
-                        <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-            <b>LOKASI</b>            
-            </div>
-            <div class="panel-body"> 
+                            <div class="col-sm-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <b>LOKASI</b>
+                                    </div>
+                                    <div class="panel-body">
 
-            <div id="map" style="height: 400px;"></div>               
-          
-    
+                                        <div id="map" style="height: 600px;"></div>
 
-            </div>            
-            </div>
-            </div>            
-            </div>                    
-            
-                        <div class="col-md-4">                            
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
                             <div class="form-group mb-3">
                                 <label for="" class="mb-3">No KK</label>
                                 <?= input_text('nokk', $nokk ?? '', '', 'required') ?>
@@ -91,6 +93,10 @@ if (session()->getFlashdata('hasForm')) {
                             <div class="form-group mb-3">
                                 <label for="" class="mb-3">Kepala Keluarga</label>
                                 <?= input_text('kepala_keluarga', $kepala_keluarga ?? '', '', 'required') ?>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="" class="mb-3">NIK Kepala Keluarga</label>
+                                <?= input_text('nik_kepala', $nik_kepala ?? '', '', 'required') ?>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="" class="mb-3">Alamat</label>
@@ -101,26 +107,44 @@ if (session()->getFlashdata('hasForm')) {
                                 <?= input_text('jumlah_anggota', $jumlah_anggota ?? '', '', 'required') ?>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="" class="mb-3">Penghasilan</label>
-                                <?= input_text('penghasilan', $penghasilan ?? '', '', 'required') ?>
+                                <label for="" class="mb-3">Keterangan Bantuan</label>
+                                <?= input_text('keterangan_bantuan', $keterangan_bantuan ?? '', '', '') ?>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="" class="mb-3">Latitude</label>                               
-                                <input type="text" name="latitude" id="latitude">
-                            </div>         
-                            <div class="form-group mb-3">
-                                <label for="" class="mb-3">longitude</label>                                
-                                <input type="text" name="longitude" id="longitude">
+                                <label for="" class="mb-3">Catatan</label>
+                                <?= input_text('catatan', $catatan ?? '', '', '') ?>
                             </div>
+                            <!-- <div class="form-group mb-3">
+                                <label for="" class="mb-3">Latitude</label>
+                                <?= input_text('latitude', $latitude ?? '', '', 'required') ?>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="" class="mb-3">Longitude</label>
+                                <?= input_text('longitude', $longitude ?? '', '', 'required') ?>
+                            </div> -->
+                            <div class="form-group mb-3">
+                                <label for="" class="mb-3">Latitude</label>
+                                <input type="text" name="latitude" id="latitude" value="<?= $latitude ?? '' ?>">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="" class="mb-3">Longitude</label>
+                                <input type="text" name="longitude" id="longitude" value="<?= $longitude ?? '' ?>">
+                            </div>
+                            <?php if (isset($foto)) : ?>
+                                <a href="<?= uploaded($foto, 'penduduk') ?>" target="_BLANK">
+                                    [lihat foto]
+                                </a>
+                            <?php endif ?>
+                            <?= input_file('file', '', '', '') ?>
                             <div class="form-group mb-3">
                                 <button class="btn btn-primary" type="submit"><i class="bi bi-save"></i> Simpan</button>
                                 <a href="<?= site_url($url) ?>" class="btn btn-danger"><i class="bi bi-reply"></i> Kembali</a>
                             </div>
                         </div>
-                    </div>                    
-                </form>                
-        </div>
-        
+                    </div>
+                </form>
+            </div>
+
 
     </section>
 </div>
@@ -129,9 +153,7 @@ if (session()->getFlashdata('hasForm')) {
 
 <?= $this->section('javascript') ?>
 <script>
-
-
-let pristine;
+    let pristine;
     let elnokk = document.querySelector('[name=nokk]');
     let elId = document.querySelector('[name=id]');
     window.onload = function() {
@@ -153,12 +175,11 @@ let pristine;
                 e.preventDefault();
             }
         });
-    }; 
-
-    
+    };
 
 
-   
 
-<?= $this->endSection() ?>
- 
+
+
+
+    <?= $this->endSection() ?>

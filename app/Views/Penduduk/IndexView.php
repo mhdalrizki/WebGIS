@@ -33,54 +33,76 @@
 
             </div>
             <div class="card-body">
-                <table class="table table-striped" id="dt">
-                    <thead>
-                        <tr>
-                            <th>No KK</th>
-                            <th>Kepala Keluarga</th>
-                            <th>Alamat</th>
-                            <th>Jumlah Anggota KK</th>
-                            <th>Penghasilan</th>
-                            <th>Latitude</th>
-                            <th>Longitude</th>                            
-                            <th>Created At</th>
-                            <th>Updated At</th>
-                            <th width="80px">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($getData as $row) : ?>
-                            <tr> 
-                                <td><?= $row->nokk ?></td>
-                                <td><?= $row->kepala_keluarga ?></td> 
-                                <td><?= $row->alamat ?></td>                         
-                                <td><?= $row->jumlah_anggota ?></td>
-                                <td><?= $row->penghasilan ?></td>                                
-                                <td><?= $row->latitude ?></td>
-                                <td><?= $row->longitude ?></td>
-                                <td><?= $row->created_at ?></td>                              
-                                <td><?= $row->updated_at ?></td>
-                                <td>
-                                    <div class="btn-group mb-1">
-                                        <div class="dropdown">
-                                            <button class="btn btn-dark dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Aksi
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="<?= site_url($url . '/form/' . $row->id) ?>">Ubah</a>
-                                                <a class="dropdown-item" href="javascript:;" data-href="<?= site_url($url . '/delete/' . $row->id) ?>" onclick="deleteData(this)">Hapus</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-    </section>
+                <table class="table table-striped" id="table1">
+
+
+                    </form>
+            </div>
+            <thead>
+                <tr>
+                    <th>No KK</th>
+                    <th>Kepala Keluarga</th>
+                    <th>NIK Kepala Keluarga</th>
+                    <th>Alamat</th>
+                    <th>Jumlah Anggota KK</th>
+                    <th>Keterangan Bantuan</th>
+                    <th>Catatan</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Foto</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th width="80px">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($getData as $row) : ?>
+                    <tr>
+                        <td><?= $row->nokk ?></td>
+                        <td><?= $row->kepala_keluarga ?></td>
+                        <td><?= $row->nik_kepala ?></td>
+                        <td><?= $row->alamat ?></td>
+                        <td><?= $row->jumlah_anggota ?></td>
+                        <td><?= $row->keterangan_bantuan ?></td>
+                        <td><?= $row->catatan ?></td>
+                        <td><?= $row->latitude ?></td>
+                        <td><?= $row->longitude ?></td>
+
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= uploaded($row->foto, 'penduduk') ?>" alt="" width="60px">
+                                <!-- <div class="ms-2">
+                                            <h6 class="mb-0">
+                                                <?= $row->kepala_keluarga ?>
+                                            </h6>
+                                            <span class="text-muted"><?= $row->kepala_keluarga ?></span>
+                                        </div> -->
+                            </div>
+                        </td>
+                        <td><?= $row->created_at ?></td>
+                        <td><?= $row->updated_at ?></td>
+                        <td>
+                            <div class="btn-group mb-1">
+                                <div class="dropdown">
+                                    <button class="btn btn-dark dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Aksi
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="<?= site_url($url . '/form/' . $row->id) ?>">Ubah</a>
+                                        <a class="dropdown-item" href="javascript:;" data-href="<?= site_url($url . '/delete/' . $row->id) ?>" onclick="deleteData(this)">Hapus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+            </table>
+        </div>
+</div>
+
+</section>
 </div>
 
 
@@ -91,7 +113,7 @@
 
 <?= $this->section('javascript') ?>
 <script>
-    let table1 = document.querySelector('#dt');
+    let table1 = document.querySelector('#table1');
     let dataTable = new simpleDatatables.DataTable(table1);
 </script>
 <?= $this->endSection() ?>

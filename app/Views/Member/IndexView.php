@@ -33,7 +33,7 @@
 
             </div>
             <div class="card-body">
-                <table class="table table-striped" id="dt">
+                <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
                             <th>Nama</th>
@@ -93,7 +93,7 @@
     let dataTable = new simpleDatatables.DataTable(table1);
 
 
-    let setStatus = (penggunaId,e) => {
+    let setStatus = (penggunaId, e) => {
         Swal.fire({
             title: 'Yakin ubah status?',
             icon: 'warning',

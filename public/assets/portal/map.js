@@ -15,7 +15,7 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
     zoomOffset: -1
 }).addTo(map);
 
-
+var marker = L.marker([-7.747789957808368,110.52746919563664]).addTo(map);
 
 
 

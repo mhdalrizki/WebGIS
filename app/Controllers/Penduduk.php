@@ -13,10 +13,14 @@ class Penduduk extends BaseController
         $data['url'] = $this->url;
         $data['page'] = 'Data ' . $this->title;
         $PendudukModel = new \App\Models\PendudukModel();
-        $data['getData'] = $PendudukModel->orderBy('updated_at', 'DESC')
+        $data['getData'] = $PendudukModel->orderBy('id', 'ANC')
             ->findAll();
+            // $data['getData'] = $PendudukModel->orderBy('updated_at', 'DESC')
+
         return view('Penduduk/IndexView', $data);
     }
+
+    
 
     public function form($id = '')
     {
@@ -24,7 +28,8 @@ class Penduduk extends BaseController
         $data['title'] = $this->title;
         $data['url'] = $this->url;
         if ($id != '') {
-            $getData = $PendudukModel->asArray()->find($id);
+            $getData = $PendudukModel->where('id', $id)->get()->getRowArray();
+            // $getData = $PendudukModel->asArray()->find($id);
         } else {
             $getData = null;
         }
@@ -38,7 +43,12 @@ class Penduduk extends BaseController
         $PendudukModel = new \App\Models\PendudukModel();
         $data = $this->request->getPost();  
         
-        
+        $file = $this->request->getFile('file');
+        if ($file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $file->move(FCPATH . 'uploads/penduduk', $newName);
+            $data['foto'] = $newName;
+        } 
 
 
         $save = $PendudukModel->save($data);
