@@ -15,14 +15,14 @@ class Penduduk extends BaseController
         $PendudukModel = new \App\Models\PendudukModel();
         $data['getData'] = $PendudukModel->orderBy('id', 'ANC')
             ->findAll();
-            // $data['getData'] = $PendudukModel->orderBy('updated_at', 'DESC')
+        // $data['getData'] = $PendudukModel->orderBy('updated_at', 'DESC')
 
         return view('Penduduk/IndexView', $data);
     }
 
-    
 
-    public function form($id = '')
+
+    public function form($id = '') //termasuk edit data
     {
         $PendudukModel = new \App\Models\PendudukModel();
         $data['title'] = $this->title;
@@ -41,14 +41,14 @@ class Penduduk extends BaseController
     public function save()
     {
         $PendudukModel = new \App\Models\PendudukModel();
-        $data = $this->request->getPost();  
-        
+        $data = $this->request->getPost();
+
         $file = $this->request->getFile('file');
         if ($file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
             $file->move(FCPATH . 'uploads/penduduk', $newName);
             $data['foto'] = $newName;
-        } 
+        }
 
 
         $save = $PendudukModel->save($data);
@@ -70,22 +70,19 @@ class Penduduk extends BaseController
         return redirect()->to($this->url);
     }
 
-    public function checkusername($nokk,$id='')
+    public function check_kk($nokk, $id = '')
     {
         $PendudukModel = new \App\Models\PendudukModel();
-        $checkUser = $PendudukModel->where('nokk',$nokk);
-        if($id!='')
-        {
-            $checkUser->where('id!=',$id);
+        $checkUser = $PendudukModel->where('nokk', $nokk);
+        if ($id != '') {
+            $checkUser->where('id!=', $id);
         }
 
-        if($checkUser->first()==null)
-        {
+        if ($checkUser->first() == null) {
             $status = true;
-        }
-        else {
+        } else {
             $status = false;
         }
-        return $this->response->setJson(['status'=>$status]);
+        return $this->response->setJson(['status' => $status]);
     }
 }

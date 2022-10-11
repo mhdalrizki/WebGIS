@@ -44,7 +44,10 @@
                     <th>No KK</th>
                     <th>Kepala Keluarga</th>
                     <th>NIK Kepala Keluarga</th>
+                    <th>RT</th>
+                    <th>RW</th>
                     <th>Alamat</th>
+                    <th>No Telepon</th>
                     <th>Jumlah Anggota KK</th>
                     <th>Keterangan Bantuan</th>
                     <th>Catatan</th>
@@ -62,7 +65,10 @@
                         <td><?= $row->nokk ?></td>
                         <td><?= $row->kepala_keluarga ?></td>
                         <td><?= $row->nik_kepala ?></td>
+                        <td><?= $row->rt ?></td>
+                        <td><?= $row->rw ?></td>
                         <td><?= $row->alamat ?></td>
+                        <td><?= $row->no_telepon ?></td>
                         <td><?= $row->jumlah_anggota ?></td>
                         <td><?= $row->keterangan_bantuan ?></td>
                         <td><?= $row->catatan ?></td>

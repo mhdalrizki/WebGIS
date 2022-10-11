@@ -91,8 +91,8 @@
 <script>
     let table1 = document.querySelector('#dt');
     let dataTable = new simpleDatatables.DataTable(table1);
-
-
+</script>
+<script>
     let setStatus = (penggunaId, e) => {
         Swal.fire({
             title: 'Yakin ubah status?',

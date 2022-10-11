@@ -9,6 +9,7 @@
 
 
 
+
 <script>
     <?php
     if (session()->getFlashdata('info')) {
@@ -21,8 +22,7 @@
     }
     ?>
 
-    let table1 = document.querySelector('#table1');
-    let dataTable = new simpleDatatables.DataTable(table1);
+
 
 
     let deleteData = (thisValue) => {
@@ -85,4 +85,30 @@
         }).bindPopup(chagedPos).update();
         map.panTo(position);
     }).addTo(map);
+</script>
+<script>
+    let table1 = document.querySelector('#table1');
+    let dataTable = new simpleDatatables.DataTable(table1);
+</script>
+<script>
+    let setStatus = (penggunaId, e) => {
+        Swal.fire({
+            title: 'Yakin ubah status?',
+            icon: 'warning',
+            html: 'Akun member akan diubah statusnya',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: true,
+            confirmButtonText: '<i class="bi bi-check"></i> Lanjutkan',
+            confirmButtonAriaLabel: 'Lanjutkan dihapus',
+            cancelButtonText: '<i class="bi bi-x"></i> Batal',
+            cancelButtonAriaLabel: 'Batalkan'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = '<?= site_url('member/setstatus') ?>/' + penggunaId + '/' + e.value;
+
+            }
+        });
+    }
+</script>
 </script>

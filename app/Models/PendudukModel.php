@@ -18,7 +18,10 @@ class PendudukModel extends Model
         'nokk',
         'kepala_keluarga',
         'nik_kepala',
+        'rt',
+        'rw',
         'alamat',
+        'no_telepon',
         'jumlah_anggota',
         'keterangan_bantuan',
         'catatan',
@@ -60,6 +63,4 @@ class PendudukModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-
 }

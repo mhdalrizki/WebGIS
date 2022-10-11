@@ -50,23 +50,23 @@
                 <li class="sidebar-title">Information</li>
 
                 <!-- <li class="sidebar-item  ">
-                     <a href="/member" class='sidebar-link'>
-                         <i class="bi bi-people"></i>
-                         <span>Member</span>
-                     </a>
-                 </li>  -->
+                    <a href="/member" class='sidebar-link'>
+                        <i class="bi bi-people"></i>
+                        <span>Member</span>
+                    </a>
+                </li> -->
                 <li class="sidebar-item  ">
                     <a href="/pemetaan" class='sidebar-link'>
                         <i class="bi bi-geo-alt"></i>
                         <span>Pemetaan</span>
                     </a>
                 </li>
-                <li class="sidebar-item  ">
+                <!-- <li class="sidebar-item  ">
                     <a href="/portal.html" class='sidebar-link'>
                         <i class="bi bi-geo-alt"></i>
                         <span>Portal GIS</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="sidebar-item  ">
                     <a href="/auth/logout" class='sidebar-link'>
                         <i class="bi bi-box-arrow-left"></i>

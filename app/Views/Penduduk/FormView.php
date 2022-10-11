@@ -99,8 +99,20 @@ if (session()->getFlashdata('hasForm')) {
                                 <?= input_text('nik_kepala', $nik_kepala ?? '', '', 'required') ?>
                             </div>
                             <div class="form-group mb-3">
+                                <label for="" class="mb-3">RT</label>
+                                <?= input_text('rt', $rt ?? '', '', 'required') ?>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="" class="mb-3">RW</label>
+                                <?= input_text('rw', $rw ?? '', '', 'required') ?>
+                            </div>
+                            <div class="form-group mb-3">
                                 <label for="" class="mb-3">Alamat</label>
                                 <?= input_text('alamat', $alamat ?? '', '', 'required') ?>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="" class="mb-3">No Telepon</label>
+                                <?= input_text('no_telepon', $no_telepon ?? '', '', 'required') ?>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="" class="mb-3">Jumlah Anggota KK</label>
@@ -162,7 +174,7 @@ if (session()->getFlashdata('hasForm')) {
         pristine = new Pristine(form); //meload form
 
         elnokk.addEventListener('input', async (e) => {
-            let get = await fetch('<?= site_url($url . '/checkusername') ?>/' + elnokk.value + '/' + elId.value);
+            let get = await fetch('<?= site_url($url . '/check_kk') ?>/' + elnokk.value + '/' + elId.value);
             let resp = await get.json();
             if (!resp.status) {
                 pristine.addError(elnokk, "No KK Sudah Digunakan");

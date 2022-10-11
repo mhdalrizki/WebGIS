@@ -1,29 +1,29 @@
- 
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+ <html lang="en">
 
-<head>
-    <?php include 'head.php'?> 
-    
-</head>
+ <head>
+     <?php include 'head.php' ?>
 
-<body>
-    <div id="app">
-   
-    <?php include 'sidebar.php'?> 
+ </head>
 
-        <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
+ <body>
+     <div id="app">
 
-            <?= $this->renderSection('content') ?>
+         <?php include 'sidebar.php' ?>
 
-            <?php include 'footer.php'?>   
-        </div>
-    </div>
-    </body>
-<?php include 'java.php'?>
-</html>
+         <div id="main">
+             <header class="mb-3">
+                 <a href="#" class="burger-btn d-block d-xl-none">
+                     <i class="bi bi-justify fs-3"></i>
+                 </a>
+             </header>
+
+             <?= $this->renderSection('content') ?>
+
+             <?php include 'footer.php' ?>
+         </div>
+     </div>
+ </body>
+ <?php include 'java.php' ?>
+
+ </html>
